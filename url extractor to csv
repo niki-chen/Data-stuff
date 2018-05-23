@@ -1,0 +1,30 @@
+# extracts the urls from hyperlinks and spits them out into a .csv file
+# one row per hyperlink
+# column 1 is hyperlink text
+# column 2 is associated url
+# uses docxpy https://pypi.org/project/docxpy/
+
+import docxpy
+import csv
+
+file = 'file.docx'
+
+# extract text
+text = docxpy.process(file)
+
+# if you want the hyperlinks
+doc = docxpy.DOCReader(file)
+doc.process()  # process file
+hyperlinks = doc.data['links']
+
+# Create .csv file. 
+hyperlinkscsv = open("hyperlinks.csv","w")
+hyperlinkscsv.close()
+
+# write hyperlinks to .csv file
+myFile = open('hyperlinks.csv', 'w')
+with myFile:
+    writer = csv.writer(myFile)
+    writer.writerows(hyperlinks)
+     
+print("Writing complete")

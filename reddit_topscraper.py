@@ -1,3 +1,6 @@
+# This script takes the main comments for a submission and writes each to a separate line of a .csv file
+# You need to specify the submission ID, the sort order, and the name of the .csv file
+
 import praw
 import csv
 import pandas as pd
@@ -6,7 +9,7 @@ import pandas as pd
 reddit = praw.Reddit(client_id='y800W9SL88E1jQ', client_secret="hNluLrmJfNpq5djab4Q9JfA6l1s", user_agent='my user agent')
 
 # get suicide prevention megathread submission as submission
-submission = reddit.submission('8pks1u')
+submission = reddit.submission('8pks1u') #specify what submission to scrape
 submission.comment_sort = 'controversial' #choose how you want to sort the comments
 
 #create a list of top level comments as a list called toplevelcomment
